@@ -1,0 +1,32 @@
+﻿@model EmployeeManagement.ViewModels.HomeDetailsViewModel
+
+@{
+    ViewBag.Title = Model.PageTitle;
+    var photoPath = "~/images/" + (Model.Employee.PhotoPath ?? "boneyard.jpg");
+}
+
+<div class="row justify-content-center m-3">
+    <div class="col-sm-8">
+        <div class="card">
+            <div class="card-header">
+                <h5>@Model.Employee.FirstName @Model.Employee.MiddleName @Model.Employee.LastName</h5>
+            </div>
+
+            <div class="card-body text-center">
+                <img class="card-img-top img-thumbnail" src="@Url.Content(photoPath)" style="width: 400px; height: 350px;" />
+                <div class="text-left">
+                    <h5>Employee ID : @Model.Employee.Id</h5>
+                    <h5>Age         : @Model.Employee.Age</h5>
+                    <h5>Email       : @Model.Employee.Email</h5>
+                    <h5>Department  : @Model.Employee.Department</h5>
+                </div>
+            </div>
+
+            <div class="card-footer text-center">
+                <a href="@Url.Action("Index", "Home")" class="btn btn-primary">Back</a>
+                <a href="@Url.Action("Edit", "Home", new { id = Model.Employee.Id })" class="btn btn-primary">Edit</a>
+                <a href="@Url.Action("Delete", "Home", new { id = Model.Employee.Id })" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>

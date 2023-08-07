@@ -1,0 +1,26 @@
+﻿@model int
+
+@{
+    ViewBag.Title = "Error";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="error-page">
+    <div class="content">
+        <h2 class="header" data-text="Oh!">
+            Oh!
+        </h2>
+        <h4 data-text="Something went wrong">
+            Something went wrong
+        </h4>
+        <p>
+            Sorry, the <strong>ID#@Model</strong> you're looking for doesn't exist.
+            If you think something is broken, report a problem.
+        </p>
+
+        <div class="btns">
+            <a href="@Url.Action("Index", "Home")">Back</a>
+            <a href="https://localhost:44315/">report problem</a>
+        </div>
+    </div>
+</div>

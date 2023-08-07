@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Employee>
+
+    @{
+        ViewBag.Title = "Employee List";
+    }
+
+<a class="btn btn-success" href="@Url.Action("Create", "Home")">Create</a>
+
+<br />
+
+<div class="row">
+    @foreach (var emp in Model)
+    {
+        var photoPath = "~/images/" + (emp.PhotoPath ?? "Clover.jpg");
+        <div class="col-md-4">
+            <div class="card m-4">
+                <div class="card-header">
+                    <h5 class="card-title">@emp.FirstName @emp.MiddleName @emp.LastName</h5>
+                </div>
+                <img class="card-img-top img-fluid;" src="@Url.Content(photoPath)" alt="@emp.FirstName"
+                     style="max-width: auto; height: 200px;" />
+                <div class="card-footer text-center">
+                    <a href="@Url.Action("Details", "Home", new { id = emp.Id })" class="btn btn-primary btn-sm">View</a>
+                    <a href="@Url.Action("Edit", "Home", new { id = emp.Id })" class="btn btn-primary btn-sm">Edit</a>
+                    <a href="@Url.Action("Delete", "Home", new { id = emp.Id })" class="btn btn-danger btn-sm">Delete</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
